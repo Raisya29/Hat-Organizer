@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hat Organizer - Solusi Penyimpanan Topi Terbaik | Bestbrand Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --black: #000000;
+            --dark-gray: #4a4a4a;
+            --light-gray: #9a9a9a;
+            --white: #ffffff;
+            --silver: #c0c0c0;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-gray);
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--black);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                         url('https://cdn.fastcdnshop.com/image/bb46e10fd50ee5250b3af0b03d1be12a464a6de4-600.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .price-tag {
+            position: relative;
+            display: inline-block;
+            padding: 0 15px;
+        }
+        
+        .price-tag::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--silver), var(--white));
+            transform: skewX(-15deg);
+            z-index: -1;
+            border-radius: 4px;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--silver);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .social-proof-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 320px;
+            background: var(--white);
+            border-left: 4px solid var(--silver);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-proof-popup.show {
+            transform: translateX(0);
+        }
+        
+        .social-proof-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            padding: 15px;
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .sticky-cta.show {
+            transform: translateY(0);
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .countdown-item {
+            background: var(--black);
+            color: var(--white);
+            border-radius: 4px;
+            padding: 5px 10px;
+            min-width: 40px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                background-attachment: scroll;
+            }
+            
+            .social-proof-popup {
+                width: 280px;
+            }
+            
+            .sticky-cta .price-section {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(192, 192, 192, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(192, 192, 192, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(192, 192, 192, 0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky CTA Button -->
+    <div class="sticky-cta">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="https://cdn.fastcdnshop.com/image/bb46e10fd50ee5250b3af0b03d1be12a464a6de4-600.jpeg" alt="Hat Organizer" class="w-16 h-16 object-cover rounded-md mr-4">
+                <div>
+                    <h3 class="font-bold text-lg">Hat Organizer</h3>
+                    <div class="flex items-center mt-1">
+                        <span class="text-red-600 font-bold text-lg mr-2">Rp 197.000</span>
+                        <span class="text-gray-500 line-through text-sm">Rp 267.000</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="scrollToOrder()" class="bg-black text-white px-6 py-3 rounded-md font-bold hover:bg-gray-800 transition duration-300 pulse">
+                BELI SEKARANG <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Social Proof Popup Container -->
+    <div id="social-proof-container"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl glassmorphism p-8 rounded-lg">
+                <div class="bg-white text-black inline-block px-3 py-1 rounded-full mb-4">
+                    <span class="font-bold">TERLARIS</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hat Organizer</h1>
+                <p class="text-xl mb-8">Solusi praktis menyimpan koleksi topi Anda tetap rapi dan mudah dijangkau</p>
+                
+                <div class="mb-8">
+                    <div class="flex items-center mb-4">
+                        <div class="price-tag">
+                            <span class="text-3xl font-bold text-black">Rp 197.000</span>
+                        </div>
+                        <span class="ml-4 text-gray-300 line-through text-xl">Rp 267.000</span>
+                    </div>
+                    <div class="bg-red-600 text-white inline-block px-3 py-1 rounded text-sm">
+                        <span>Hemat Rp 70.000</span>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>Stok hanya tersisa: <span class="font-bold">15 pcs</span></span>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>Pengiriman Cepat ke seluruh Indonesia</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>Garansi 7 Hari Uang Kembali</span>
+                    </div>
+                </div>
+                
+                <button onclick="scrollToOrder()" class="bg-white text-black px-8 py-4 rounded-md font-bold text-lg hover:bg-gray-100 transition duration-300 mb-6 w-full md:w-auto">
+                    BELI SEKARANG - Rp 197.000
+                </button>
+                
+                <div class="flex items-center justify-center md:justify-start space-x-6 mt-6">
+                    <div class="flex flex-col items-center">
+                        <i class="fas fa-shield-alt text-2xl text-silver mb-2"></i>
+                        <span class="text-sm">Garansi</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fas fa-truck text-2xl text-silver mb-2"></i>
+                        <span class="text-sm">Bisa COD</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fas fa-lock text-2xl text-silver mb-2"></i>
+                        <span class="text-sm">Pembayaran Aman</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Product Gallery -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Hat Organizer Solusi Penyimpanan Topi</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Tampilkan koleksi topi Anda dengan cara yang elegan dan hemat ruang</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="gallery-item">
+                    <img src="https://cdn.fastcdnshop.com/image/769508affdd680d8d7e3a9fe0f05c31e7bd72792-600.jpeg" alt="Hat Organizer" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn.fastcdnshop.com/image/982d8fb8ba2147385f1f0ea55e94183e8b3bd81f-600.jpeg" alt="Hat Organizer" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn.fastcdnshop.com/image/024a38cecd458e9c6cf1fc674136fb4b2c572ac3-600.jpeg" alt="Hat Organizer" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn.fastcdnshop.com/image/fd4ada32f12a2a046c73edd617acc84b96771c0e-600.jpeg" alt="Hat Organizer" class="w-full h-64 object-cover rounded-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Keunggulan Hat Organizer</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Solusi penyimpanan topi yang sempurna untuk Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-expand-arrows-alt text-2xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Hemat Ruang</h3>
+                    <p class="text-gray-600">Desain compact yang dapat dipasang di dinding, lemari, atau pintu tanpa memakan banyak ruang</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-hat-cowboy text-2xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Kapasitas Besar</h3>
+                    <p class="text-gray-600">Dapat menyimpan hingga 12 topi sekaligus dengan aman dan terorganisir</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-shield-alt text-2xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Perlindungan Optimal</h3>
+                    <p class="text-gray-600">Topi tersusun rapi tanpa terlipat, menjaga bentuk dan kualitas topi tetap prima</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-eye text-2xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Akses Mudah</h3>
+                    <p class="text-gray-600">Lihat dan ambil topi favorit Anda kapan saja tanpa harus mengeluarkan semua koleksi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mengapa Memilih Hat Organizer Kami?</h2>
+                <p class="max-w-2xl mx-auto text-gray-300">Solusi terbaik untuk penggemar topi sejati</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center mb-10">
+                    <div class="md:w-1/3 mb-6 md:mb-0">
+                        <div class="bg-gray-800 rounded-full w-40 h-40 flex items-center justify-center mx-auto">
+                            <i class="fas fa-award text-5xl text-silver"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-10">
+                        <h3 class="text-2xl font-bold mb-4">Kualitas Premium</h3>
+                        <p class="mb-4 text-gray-300">Dibuat dengan bahan berkualitas tinggi yang tahan lama dan kokoh. Material premium kami memastikan Hat Organizer tidak mudah rusak meski digunakan bertahun-tahun.</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-silver flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span>Bahan kuat dan tahan lama</span>
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <div class="w-8 h-8 rounded-full bg-silver flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span>Desain elegan dengan finishing premium</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center mb-10">
+                    <div class="md:w-2/3 md:pr-10 md:order-first mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-4">Instalasi Mudah</h3>
+                        <p class="mb-4 text-gray-300">Pasang Hat Organizer di mana saja dalam waktu kurang dari 5 menit. Tidak perlu alat khusus atau keahlian khusus untuk memasang organizer ini.</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-silver flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span>Sistem pemasangan sederhana</span>
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <div class="w-8 h-8 rounded-full bg-silver flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span>Tidak merusak permukaan tempat pemasangan</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 md:order-last">
+                        <div class="bg-gray-800 rounded-full w-40 h-40 flex items-center justify-center mx-auto">
+                            <i class="fas fa-tools text-5xl text-silver"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-6 md:mb-0">
+                        <div class="bg-gray-800 rounded-full w-40 h-40 flex items-center justify-center mx-auto">
+                            <i class="fas fa-thumbs-up text-5xl text-silver"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-10">
+                        <h3 class="text-2xl font-bold mb-4">Kepuasan Pelanggan Terjamin</h3>
+                        <p class="mb-4 text-gray-300">Lebih dari 1000 pelanggan puas telah menggunakan Hat Organizer kami. Kami menjamin kepuasan Anda dengan garansi 7 hari uang kembali.</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-silver flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span>Garansi 30 hari uang kembali</span>
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <div class="w-8 h-8 rounded-full bg-silver flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span>Dukungan pelanggan 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Apa Kata Pelanggan Kami</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Testimoni jujur dari pengguna Hat Organizer</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 bg-cover bg-center" style="background-image: url('https://cdn.fastcdnshop.com/image/a3a35e24bab90ef5dd54d63fddb4533992968293-700.jpeg')"></div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Budi Santoso</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Hat Organizer ini mengubah cara saya menyimpan topi. Sekarang koleksi 10 topi baseball saya tertata rapi di pintu lemari. Sangat praktis!"</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 bg-cover bg-center" style="background-image: url('https://cdn.fastcdnshop.com/image/a3a35e24bab90ef5dd54d63fddb4533992968293-700.jpeg')"></div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Siti Rahayu</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Topi-topi saya tidak lagi berdebu dan bentuknya tetap bagus. Organizer ini menghemat banyak ruang di lemari saya. Worth every penny!"</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 bg-cover bg-center" style="background-image: url('https://cdn.fastcdnshop.com/image/a3a35e24bab90ef5dd54d63fddb4533992968293-700.jpeg')"></div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Andi Wijaya</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Saya suka sekali dengan produk ini. Kualitasnya bagus, pemasangan mudah, dan yang paling penting topi saya sekarang tersusun rapi dan mudah diambil."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing & Order Section -->
+    <section class="py-16" id="order-section">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gradient-to-r from-gray-50 to-silver p-1 rounded-xl">
+                <div class="bg-white rounded-xl p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Dapatkan Hat Organizer Sekarang</h2>
+                        <p class="text-red-600 font-bold mb-2">PROMO TERBATAS! Stok hanya tersisa 15 pcs</p>
+                        
+                        <div class="flex justify-center items-center mb-6">
+                            <div class="price-tag mr-4">
+                                <span class="text-3xl font-bold">Rp 197.000</span>
+                            </div>
+                            <span class="text-gray-500 line-through">Rp 267.000</span>
+                        </div>
+                        
+                        <div class="max-w-md mx-auto bg-gray-100 rounded-lg p-4 mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>Stok tersisa:</span>
+                                <span class="font-bold">15 pcs</span>
+                            </div>
+                            <div class="w-full bg-gray-300 h-4 rounded-full">
+                                <div class="bg-red-600 h-4 rounded-full" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <p class="font-bold mb-2">PROMO BERAKHIR DALAM:</p>
+                            <div class="countdown-timer">
+                                <div class="countdown-item">
+                                    <div class="text-xl" id="countdown-hours">05</div>
+                                    <div class="text-xs">Jam</div>
+                                </div>
+                                <div class="countdown-item">
+                                    <div class="text-xl" id="countdown-minutes">42</div>
+                                    <div class="text-xs">Menit</div>
+                                </div>
+                                <div class="countdown-item">
+                                    <div class="text-xl" id="countdown-seconds">18</div>
+                                    <div class="text-xs">Detik</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- OrderOnline Form -->
+                    <div class="order-form-container">
+                        <div class="ooef">
+                            <form class="orderonline-embed-form" data-username="vera" data-product-slug="hat-organizer" data-product-id="68b121f3a393b0b86f00b0b0" id="oo-embed-form-hat-organizer-150" data-origin="orderonline">
+                                <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}</style><div aria-live="polite" role="status"><div>Loading...</div></div></div>
+                            </form>
+                        </div>
+                        <script>
+                            if (typeof xLogError != 'function') {
+                                var xLogError = function (error) {
+                                    var req = new XMLHttpRequest();
+                                    var payload = JSON.stringify({ url: document.location.href, line: error.line, stack: error.stack });
+                                    var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                                    req.open('POST', 'https://api.orderonline.id/log', true);
+                                    req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                                    req.send(params);
+                                };
+                            }
+                            try {
+                                if (typeof xEmbedScript != 'function') {
+                                    var xEmbedScript = function () {
+                                        !function(w, d, e, v, id, t, s) {
+                                            if (d.getElementById(id)) return;
+                                            t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                            s = d.getElementsByTagName(e)[0];
+                                            s.parentNode.insertBefore(t, s);
+                                        }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                                    };
+                                }
+                                if (typeof xEmbedInit != 'function') {
+                                    var xEmbedInit = function (w, n) {
+                                        if (w.ooe) return;
+                                        n = w.ooe = function() {
+                                            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                                        };
+                                        if (!w._ooe) w._ooe = n;
+                                        n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
+                                    };
+                                }
+                                xEmbedInit(window);
+                                ooe('setup', 'redirect', 'https://vera.orderonline.id');
+                                ooe('init', '5f1a7807a9bf807d6c63d963', '68b121f3a393b0b86f00b0b0', '68b121f3a393b0b86f00b0b1', 'oo-embed-form-hat-organizer-150', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":true});
+                                if (!window.jQuery) {
+                                    !function(w, d, e, v, id, t, s) {
+                                        if (d.getElementById(id)) return;
+                                        t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                        t.addEventListener('load', xEmbedScript);
+                                        s = d.getElementsByTagName(e)[0];
+                                        s.parentNode.insertBefore(t, s);
+                                    }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+                                } else {
+                                    xEmbedScript();
+                                }
+                            } catch (e) {
+                                xLogError(e);
+                                throw e;
+                            }
+                        </script>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Scroll to order form
+        function scrollToOrder() {
+            document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Sticky CTA button
+        window.addEventListener('scroll', function() {
+            const stickyCta = document.querySelector('.sticky-cta');
+            if (window.scrollY > 300) {
+                stickyCta.classList.add('show');
+            } else {
+                stickyCta.classList.remove('show');
+            }
+        });
+        
+        // Social proof popup
+        const customerNames = ['Vina', 'Dina', 'Kartika', 'Lestari', 'Putri', 'Maya Sari', 'Rani', 'Permata', 'Lestari F'];
+        const customerCities = ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Bekasi', 'Tangerang', 'Depok', 'Semarang'];
+        const avatarUrl = 'https://cdn.fastcdnshop.com/image/a3a35e24bab90ef5dd54d63fddb4533992968293-700.jpeg';
+        
+        let popupTimer;
+        
+        function createSocialProofPopup() {
+            const container = document.getElementById('social-proof-container');
+            
+            // Clear existing popups
+            container.innerHTML = '';
+            
+            // Create new popup
+            const popup = document.createElement('div');
+            popup.className = 'social-proof-popup';
+            
+            // Random data
+            const randomName = customerNames[Math.floor(Math.random() * customerNames.length)];
+            const randomCity = customerCities[Math.floor(Math.random() * customerCities.length)];
+            const minutesAgo = Math.floor(Math.random() * 15) + 1;
+            
+            // Popup content
+            popup.innerHTML = `
+                <div class="social-proof-avatar" style="background-image: url('${avatarUrl}')"></div>
+                <div>
+                    <p class="font-bold">${randomName} dari ${randomCity}</p>
+                    <p class="text-sm text-gray-600">baru saja memesan Hat Organizer</p>
+                    <p class="text-xs text-gray-500 mt-1">${minutesAgo} menit yang lalu</p>
+                </div>
+            `;
+            
+            container.appendChild(popup);
+            
+            // Show popup
+            setTimeout(() => {
+                popup.classList.add('show');
+                
+                // Auto-hide after 5 seconds
+                popupTimer = setTimeout(() => {
+                    popup.classList.remove('show');
+                    setTimeout(() => {
+                        container.removeChild(popup);
+                    }, 500);
+                }, 5000);
+            }, 100);
+            
+            // Hover to pause auto-hide
+            popup.addEventListener('mouseenter', () => {
+                clearTimeout(popupTimer);
+            });
+            
+            popup.addEventListener('mouseleave', () => {
+                popupTimer = setTimeout(() => {
+                    popup.classList.remove('show');
+                    setTimeout(() => {
+                        container.removeChild(popup);
+                    }, 500);
+                }, 2000);
+            });
+        }
+        
+        // Initialize social proof popups
+        function initSocialProof() {
+            // Create first popup after 3 seconds
+            setTimeout(createSocialProofPopup, 3000);
+            
+            // Create subsequent popups every 8 seconds
+            setInterval(createSocialProofPopup, 8000);
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const hours = document.getElementById('countdown-hours');
+            const minutes = document.getElementById('countdown-minutes');
+            const seconds = document.getElementById('countdown-seconds');
+            
+            let h = parseInt(hours.textContent);
+            let m = parseInt(minutes.textContent);
+            let s = parseInt(seconds.textContent);
+            
+            s--;
+            
+            if (s < 0) {
+                s = 59;
+                m--;
+                
+                if (m < 0) {
+                    m = 59;
+                    h--;
+                    
+                    if (h < 0) {
+                        h = 5;
+                        m = 42;
+                        s = 18;
+                    }
+                }
+            }
+            
+            hours.textContent = h.toString().padStart(2, '0');
+            minutes.textContent = m.toString().padStart(2, '0');
+            seconds.textContent = s.toString().padStart(2, '0');
+        }
+        
+        // FAQ accordion
+        function setupFAQ() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('i');
+                    
+                    if (answer.classList.contains('hidden')) {
+                        answer.classList.remove('hidden');
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        answer.classList.add('hidden');
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initSocialProof();
+            setInterval(updateCountdown, 1000);
+            setupFAQ();
+        });
+    </script>
+</body>
+</html>
